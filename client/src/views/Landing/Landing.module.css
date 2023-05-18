@@ -1,0 +1,135 @@
+.imagen{
+  background-image: url('../../image/foto3.jpg');
+  position: absolute;
+  top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  /* height: 100vh;
+  width: 100%;
+  text-align: center;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-content: stretch; */
+}
+
+.contenedor{
+  display: flex;
+  width: 100%;
+  height: 50rem;
+}
+.contenedorLogo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* padding: 1rem;
+  margin: 1rem; */
+  color: aliceblue;
+  
+}
+.descripcion{
+  display: flex;
+  color: aliceblue;
+  font-size: 1.5rem;
+  font-weight: 5px;
+  text-align: start;
+  font-family: sans-serif	;
+  font-weight: lighter;
+}
+.countryLogo{
+  display: flex;
+  width: 50%;
+  height: auto;
+  padding: 5rem;
+  align-items: flex-start;
+  justify-content: start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+}
+.home{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  justify-content: center;
+}
+.button{
+  margin: 1rem;
+  /* border: 1px solid;
+  border-color: white; */
+  border: none;
+  width: 6rem;
+  height: 3rem;
+  border-radius: 1rem;
+  font-size: larger;
+  background-color:aliceblue;
+  opacity: .8;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.country{
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+  font-family: sans-serif	;
+  font-weight: normal;
+  font-size: 5rem; 
+}
+@media screen and (max-width: 460px){
+  .country{
+      font-size: 3rem;
+      padding: 5px;
+      margin: 0;
+      height: 80px;
+      }
+  .contenedorLogo{
+      flex-direction: column;
+  }
+  .contenedor{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+  .countryLogo{
+      height: auto;
+      padding: 0%;
+      align-items: center;
+      width: 100%;
+  }   
+  .imagen{
+      position: absolute;
+      /* height: 90%; */
+      background-position: center center;
+      background-attachment: fixed;
+  
+  }
+  .logo{
+      width: auto;
+      height: 6rem;
+      padding: 0;
+  }
+  .descripcion{
+      width: 280px;
+      height: auto;
+      font-size: 19px;
+      text-align: center;
+      font-weight: 400;
+      margin: 30px;
+      background-color: #01010145;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      -webkit-box-shadow: 5px 5px 15px 5px #000000;
+      box-shadow: 4px 4px 20px 10px #00000017;
+  }
+  .button{
+      margin:none;
+      width: 10rem;
+  }
+ 
+}
