@@ -6,3 +6,6 @@ export const SORT = "SORT";
 export const SORT_POPULATION = "SORT_POPULATION";
 export const SORT_CONTINENT = "SORT_CONTINENT";
 export const SORT_ACTIVITY = "SORT_ACTIVITY";
+export const CLEAR_DETAIL = "CLEAR_DETAIL";
+
+// export const DELETE_ACTIVITY = "DELETE_ACTIVITY";

@@ -1,6 +1,7 @@
 import React from "react";
 import FilterButtons from "../../components/FilterButtons/FilterButtons";
 import Cards from "../../components/Cards/Cards";
+import Footer from "../../components/Footer/Footer";
 import style from "./Home.module.css";
 
 function Home() {
@@ -10,6 +11,7 @@ function Home() {
       <div className={style.cards}>
         <Cards />
       </div>
+      <Footer />
     </div>
   );
 }

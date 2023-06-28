@@ -1,0 +1,13 @@
+.footer{
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background:black;
+    height: 5rem;
+}
+.text{
+    color: aliceblue;
+}

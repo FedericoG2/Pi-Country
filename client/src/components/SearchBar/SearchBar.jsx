@@ -6,26 +6,35 @@ import { getCountryByName } from "../../redux/actions";
 
 function SearchBar() {
   const dispatch = useDispatch();
+
   const [country, setCountry] = useState("");
+  //-----------------------------------------------------------------------
   const onChangeHandler = (event) => {
     setCountry(event.target.value);
   };
-  const functions = () => {
-    dispatch(getCountryByName(country));
-    setCountry("");
+
+  const functions = (e) => {
+    e.preventDefault();
+    if (!country) {
+      return alert("Escriba algo porfavor :)");
+    } else {
+      dispatch(getCountryByName(country));
+      setCountry("");
+    }
   };
+  //------------------------------------------------------------------------
   return (
     <div className={style.container}>
       <input
         autoComplete="off"
         className={style.input}
         type="search"
-        placeholder="Search..."
+        placeholder="Buscar..."
         name="name"
         value={country}
         onChange={onChangeHandler}
       />
-      <button onClick={() => functions()} className={style.buttons}>
+      <button onClick={(e) => functions(e)} className={style.buttons}>
         BUSCAR
       </button>
     </div>

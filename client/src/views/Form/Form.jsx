@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import style from "./Form.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCountries } from "../../redux/actions";
+import { useHistory } from "react-router-dom";
+
 import axios from "axios";
 
 const Form = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.copyCountries);
   useEffect(() => {
-    if (countries === 0) {
-      dispatch(getAllCountries());
-    }
     dispatch(getAllCountries());
-  }, [dispatch, countries]);
+  }, [dispatch]);
 
   //-------------------------------------------------------------------ESTADOS--------------------------------
   const [form, setForm] = useState({
@@ -25,11 +25,9 @@ const Form = () => {
   const [error, setError] = useState({
     name: "",
     duration: "",
+    select: "",
   });
 
-  console.log(form);
-  console.log(error);
-  const [CountrySelected, setCountrySelected] = useState("Country");
   //----------------------------------------------------------------GUARDANDO Y VALIDANDO PROPIEDADES---------------------------------------------------------
   const handleChange = (e) => {
     const property = e.target.name;
@@ -42,7 +40,6 @@ const Form = () => {
 
     if (property === "name") {
       const regularExpression = /[`@#$%^&*()_+\-=[\]{};'"\\|<>/~]/;
-      const numberExpression = /^([0-9])*$/;
 
       if (regularExpression.test(value)) {
         error.name = "El nombre no puede contener caracteres especiales!";
@@ -50,22 +47,27 @@ const Form = () => {
         error.name = "";
       }
     }
-    if (property === "duration") {
-      if (value < 1) {
-        error.duration = "La actividad debe durar al menos una hora";
-      } else {
-        error.duration = "";
-      }
-    }
   };
 
-  //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------SELECT COUNTRY---------------------------------------------------------------------------
+
   const handleSelectCountry = (e) => {
-    setForm({
-      ...form,
-      country: [...form.country, e.target.value],
-    });
-    setCountrySelected(e.target.value);
+    const value = e.target.value;
+    if (form.country.includes(value)) {
+      setError({
+        ...error,
+        select: "Pais ya seleccionado",
+      });
+    } else {
+      setForm({
+        ...form,
+        country: [...form.country, value],
+      });
+      setError({
+        ...error,
+        select: "",
+      });
+    }
   };
   const handleDeleteCountry = (e) => {
     e.preventDefault();
@@ -74,7 +76,10 @@ const Form = () => {
       ...form,
       country: deleteCountry,
     });
-    if (e.target.value === CountrySelected) setCountrySelected("Country");
+    setError({
+      ...error,
+      select: "",
+    });
   };
   //--------------------------------------------------------------------------ENVIO DE FORMULARIO---------------------------------------------------------
   const handleSubmit = async (e) => {
@@ -124,14 +129,14 @@ const Form = () => {
         <div>
           <label>Duracion (hs)</label>
           <input
-            type="number"
+            type="time"
             name="duration"
             placeholder="..."
             value={form.duration}
             onChange={handleChange}
           />
         </div>
-        {error.duration && <p className={style.error}>{error.duration}</p>}
+        {/* {error.duration && <p className={style.error}>{error.duration}</p>} */}
         <div>
           <label>Dificultad</label>
           <div className={style.season}>
@@ -234,14 +239,19 @@ const Form = () => {
         </div>
 
         <div>
+          {error.select && <p className={style.error}>{error.select}</p>}
           <label>Paises </label>
 
-          <select className={style.select} onChange={handleSelectCountry}>
-            <option select disabled selected={true}>
+          <select
+            defaultValue="-"
+            className={style.select}
+            onChange={handleSelectCountry}
+          >
+            <option value="-" disabled>
               -
             </option>
             {countries.map((c, i) => (
-              <option key={i} name="country" value={c.name}>
+              <option key={i} name="country" value={c.id}>
                 {c.name}
               </option>
             ))}

@@ -1,21 +1,29 @@
 .celda {
     margin-top: 50px;
       border-radius: 12px;
-      background: #ffffff;
-      box-shadow: 4px 4px 10px #e3e3e3, -4px -4px 10px #ffffff;
-      overflow: hidden;
+      background-color:slategrey ;
+   
       width: 300px;
+    }
+     .boton {
+      display: flex;
+      justify-content: center;
+      background-color: aliceblue;
+      width: 10%;
+    }
+    .boton:hover{
+      background-color: red;
     }
     
     .box {
         padding: 16px;
       }
-      .info p,
-    h3 {
+      .info  {
       margin-top: 15px;
       text-align: start;
       padding: 12px;
       max-width: 100%;
+      color: #ffffff;
     }
     .info .titulo{
         display: flex;

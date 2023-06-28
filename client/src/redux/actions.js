@@ -8,6 +8,8 @@ import {
   SORT_CONTINENT,
   SORT_ACTIVITY,
   GET_ACTIVITIES,
+  
+  CLEAR_DETAIL,
 } from "./actionsTypes";
 const API_URL = "http://localhost:3001";
 
@@ -55,4 +57,11 @@ export const getCountriesContinent = (value) => {
 export const getCountriesActivities = (value) => {
   return { type: SORT_ACTIVITY, payload: value };
 };
+
+export function clear() {
+  return function (dispatch) {
+    dispatch({ type: CLEAR_DETAIL });
+  };
+}
+//------------------------------------------------
 
